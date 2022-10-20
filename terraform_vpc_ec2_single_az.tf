@@ -48,6 +48,11 @@ variable "environment_tag" {
   default = "YanivTryOuts"
 }
 
+variable "network_interface_id" {
+  type = string
+  default = "network_id_from_aws"
+}
+
 
 
 resource "aws_vpc" "vpc" {
@@ -136,14 +141,16 @@ resource "local_file" "aws_cloud_pem" {
 }
 
 
-resource "aws_instance" "testInstance" {
+resource "aws_instance" "" {
   ami           = var.instance_ami
-  instance_type = "t2.micro"
-#   instance_type = var.instance_type
-#   subnet_id = aws_subnet.subnet_public.id
-#   vpc_security_group_ids = [aws_security_group.sg_22.id]
-#   key_name = aws_key_pair.generated_key.key_name
-#  tags = {
-#   Environment = var.environment_tag
-#  }
+  instance_type = var.instance_type
+
+  network_interface {
+    network_interface_id = var.network_interface_id
+    device_index         = 0
+  }
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
 }

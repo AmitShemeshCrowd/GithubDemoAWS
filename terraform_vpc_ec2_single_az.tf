@@ -143,7 +143,7 @@ resource "local_file" "aws_cloud_pem" {
 
 resource "aws_instance" "main" {
   ami           = var.instance_ami
-  instance_type = "vpc-0432f5aea9571789d"
+  instance_type = ['vpc-0432f5aea9571789d']
   subnet_id = aws_subnet.subnet_public.id
 #   network_interface {
 #     network_interface_id = var.network_interface_id

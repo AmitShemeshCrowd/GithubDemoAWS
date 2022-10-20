@@ -122,15 +122,13 @@ resource "aws_security_group" "sg_22" {
 }
 
 
-variable "key_name" {}
-
 resource "tls_private_key" "example" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 
 resource "aws_key_pair" "generated_key" {
-  key_name   = "var.key_name"
+  key_name   = "amitkey"
   public_key = "${tls_private_key.example.public_key_openssh}"
 }
 

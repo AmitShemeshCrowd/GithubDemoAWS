@@ -12,6 +12,9 @@ terraform {
   }
 }
 
+provider "aws" {
+    region     ="us-east-1"
+}
 
 variable "cidr_vpc" {
   description = "CIDR block for the VPC"

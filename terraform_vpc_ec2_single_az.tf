@@ -144,7 +144,7 @@ resource "local_file" "aws_cloud_pem" {
 resource "aws_instance" "main" {
   ami           = var.instance_ami
   instance_type = var.instance_type
-  subnet_id = "subnet-0f264b195f258315a"
+  subnet_id = "subnet-02c3547782479ced6"
 #   network_interface {
 #     network_interface_id = var.network_interface_id
 #     device_index         = 0
